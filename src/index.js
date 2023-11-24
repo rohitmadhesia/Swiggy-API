@@ -8,6 +8,7 @@ import Contact from "./Components/Contact";
 import Body from "./Components/Body";
 import RestaurantMenu from "./Components/RestaurantMenu";
 import './index.css'
+import Cart from "./Components/Cart";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
@@ -28,6 +29,10 @@ const routeApp = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />
+      },
+      {
+        path: "/cart",
+        element: <Cart/>
       },
       {
         path: "/restaurant/:resId",

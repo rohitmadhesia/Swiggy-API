@@ -34,4 +34,17 @@ const Card = (props) => {
   );
 };
 
+export const onPromoteCard = (Card) => {
+  return () => {
+    return (
+      <div>
+        <h4>Promoted</h4>
+        <Card/>
+      </div>
+    )
+  }
+
+}
+
+
 export default Card;

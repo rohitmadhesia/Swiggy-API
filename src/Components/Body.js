@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card,{onPromoteCard} from "./Card";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ const Body = () => {
   const [search, setSearch] = useState("");
   const [list, setList] = useState([]);
   const [filterRes, setFilterRes] = useState([]);
+
+  const updatedCard = onPromoteCard(Card)
 
   const info = useResList();
   const windoOnline = useOnline();

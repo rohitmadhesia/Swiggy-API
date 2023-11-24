@@ -1,20 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import { HEAD_URL } from "../Utilites/Constant";
 import { Link } from "react-router-dom";
+import userContext from "../Utilites/userContext";
+import {  useSelector } from "react-redux";
 
 const Header = () => {
   const [update, setUpdate] = useState("login");
 
-  useEffect(() => {
-    console.log("update");
-  }, [update]);
+  const {userLoggedIn} = useContext(userContext)
 
+  const cartItems = useSelector((store) => store.cart.items)
+  console.log(cartItems)
+   
   return (
     <>
       <div className="flex justify-between m-2 bg-pink-200 shadow-lg ">
         <div className="">
-          <img className="w-32  " alt="img" src={HEAD_URL} />
+          <img className="w-32 rounded-2xl ml-3 mt-1  " alt="img" src={HEAD_URL} />
         </div>
         <div className="">
           <ul className="flex p-10 gap-10">
@@ -27,7 +30,8 @@ const Header = () => {
             <li>
               <Link to="/contact">Contact us</Link>
             </li>
-            <li>Cart</li>
+            <li>
+            <Link to="/cart">Cart - ({cartItems.length}items)</Link></li>
             <button
               onClick={() => {
                 update === "login" ? setUpdate("logout") : setUpdate("login");
@@ -35,6 +39,7 @@ const Header = () => {
             >
               {update}
             </button>
+            <li>{userLoggedIn}</li>
           </ul>
         </div>
       </div>
